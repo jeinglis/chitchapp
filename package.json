@@ -1,0 +1,19 @@
+{
+  "name": "chitchapp",
+  "version": "1.0.0",
+  "description": "SENG 513 Assignment 3 Chat App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeinglis/chitchapp.git"
+  },
+  "author": "James Inglis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeinglis/chitchapp/issues"
+  },
+  "homepage": "https://github.com/jeinglis/chitchapp#readme"
+}
