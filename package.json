@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jeinglis/chitchapp/issues"
   },
-  "homepage": "https://github.com/jeinglis/chitchapp#readme"
+  "homepage": "https://github.com/jeinglis/chitchapp#readme",
+  "dependencies": {
+    "vue-material": "^1.0.0-beta-7"
+  }
 }
