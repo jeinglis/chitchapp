@@ -1,37 +1,70 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-    </ul>
+  <div class="chat">
+    <ol>
+      <li v-for="message in messages" :key="message.dateTime">
+        {{message.user}} - {{message.message}}&nbsp&nbsp&nbsp&nbsp&nbsp{{ message.dateTime }}
+      </li>
+    </ol>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Chat',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Messages',
+      messages:[
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.01", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.02", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.03", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.04", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.05", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.06", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.07", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.08", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.09", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.00", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.15", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.20", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.01", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.02", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.03", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.04", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.05", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.06", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.07", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.08", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.09", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.00", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.15", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.20", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.01", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.02", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.03", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.04", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.05", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.06", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.07", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.08", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.09", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.00", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.15", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.20", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.01", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.02", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.03", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.04", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.05", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.06", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.07", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.08", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.09", message: "aklfilankjer"},
+        {user:"James Inglis", textColor:"red", dateTime: "01/01/2018 16:24.00", message: "Hey how are you"},
+        {user:"Jessica Inglis", textColor:"blue", dateTime: "01/01/2018 16:24.15", message: "I'm great"},
+        {user:"Julia Inglis", textColor:"green", dateTime: "01/01/2018 16:24.20", message: "aklfilankjer"},
+        ]
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
