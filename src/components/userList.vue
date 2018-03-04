@@ -1,10 +1,10 @@
 <template>
   <div class="userList">
-    <ul>
-      <li v-for="user in users" :key="user.name">
-        {{ user.name }}
-      </li>
-    </ul>
+    <md-list>
+      <md-list-item v-for="user in users" :key="user.name">
+        <span class="md-subheading">{{ user.name }}</span>
+      </md-list-item>
+    </md-list>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
         {name:"Jessica Inglis", textColor:"blue"},
         {name:"Julia Inglis", textColor:"pink"},
         {name:"Finn Inglis", textColor:"green"},
-        {name:"Willow Inglis", textColor:"black"}
+        {name:"Willow Inglis", textColor:"black"},
         ]
     }
   }
@@ -27,11 +27,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.userList {
-  align-content: center;
-  flex:1;
-}
-p {
-  align-content: center;
+li {
+  list-style-type: none;
 }
 </style>
