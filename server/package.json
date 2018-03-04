@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jeinglis/chitchapp/issues"
   },
-  "homepage": "https://github.com/jeinglis/chitchapp#readme"
+  "homepage": "https://github.com/jeinglis/chitchapp#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^2.0.4"
+  }
 }
