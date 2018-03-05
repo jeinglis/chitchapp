@@ -84,11 +84,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .md-app-content {
-  max-height: 70vh;
+  height: 70vh;
   overflow: auto;
 }
 .md-app-drawer {
-  max-height: 70vh;
+  height: 70vh;
   overflow: auto;
 }
 .input {
