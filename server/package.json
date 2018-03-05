@@ -2,9 +2,12 @@
   "name": "chitchapp-server",
   "version": "1.0.0",
   "description": "node server for chitchapp",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/app.js --exec  \"npm run lint && node\"",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js  --fix",
+    "seed": "node seed"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,13 @@
   },
   "homepage": "https://github.com/jeinglis/chitchapp#readme",
   "dependencies": {
+    "eslint": "^4.18.2",
     "express": "^4.15.2",
+    "nodemon": "^1.17.1",
     "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
   }
 }
