@@ -1,16 +1,19 @@
 <template>
   <div class="chat">
-    <md-list class="md-double-line" v-for="message in messages" :key="message.dateTime">
-      <md-list-item>
+    <md-list class="md-double-line" >
+      <md-list-item v-for="message in messages" :key="message.dateTime">
         <md-avatar>
-          <md-icon>person</md-icon>
+          <md-icon v-if="message.type === 'system'"  v-bind:style="{ color: message.nickColor }">info</md-icon>
+          <md-icon v-else-if="message.nickId === currentnickId"  class="md-primary">person</md-icon>
+          <md-icon v-else v-bind:style="{ color: 'white' }">person</md-icon>
         </md-avatar>
         <div class="md-list-item-text">
           <md-field>
-            <b>{{message.user}} </b>
+            <b v-bind:style="{ color: message.nickColor}">{{message.nick}} </b>
             <i>{{message.dateTime}}</i>
           </md-field>
-          <p>{{message.message}}</p>
+          <span v-if="message.type === 'system'" v-bind:style="{ color: message.nickColor}">{{message.message}}</span>
+          <span v-else v-bind:style="{ color: 'white'}">{{message.message}}</span>
         </div>
       </md-list-item>
     </md-list>
@@ -22,296 +25,76 @@ export default {
   name: "Chat",
   data() {
     return {
-      msg: "Messages",
+      currentnickId: "test-me",
       messages: [
         {
-          user: "James Inglis",
-          textColor: "red",
+          type:"nick",
+          nick: "James Inglis",
+          nickColor: "white",
           dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
+          message: "Hey how are you",
+          nickId: "test-me"
         },
         {
-          user: "Jessica Inglis",
-          textColor: "blue",
+          type:"system",
+          nick: "Notification",
+          nickColor: "#BDBDBD",
           dateTime: "March 1st 3:25pm",
-          message: "I'm great"
+          message: "beep boop this is a system message",
+          nickId: ""
         },
         {
-          user: "Julia Inglis",
-          textColor: "green",
+          type:"nick",
+          nick: "Jessica Inglis",
+          nickColor: "#4DD0E1",
+          dateTime: "March 1st 3:25pm",
+          message: "I'm great",
+          nickId: "test-not-me"
+        },
+        {
+          type:"nick",
+          nick: "Julia Inglis",
+          nickColor: "#F06292",
           dateTime: "March 1st 3:25pm",
           message: "aklfilankjer"
         },
         {
-          user: "James Inglis",
-          textColor: "red",
+          type:"nick",
+          nick: "James Inglis",
+          nickColor: "white",
           dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
+          message: "Hey how are you",
+          nickId: "test-me"        
         },
         {
-          user: "Jessica Inglis",
-          textColor: "blue",
+          type:"nick",
+          nick: "Jessica Inglis",
+          nickColor: "#4DD0E1",
           dateTime: "March 1st 3:25pm",
           message: "I'm great"
         },
         {
-          user: "Julia Inglis",
-          textColor: "green",
+          type:"nick",
+          nick: "Julia Inglis",
+          nickColor: "#F06292",
           dateTime: "March 1st 3:25pm",
           message: "aklfilankjer"
         },
         {
-          user: "James Inglis",
-          textColor: "red",
+          type:"nick",
+          nick: "James Inglis",
+          nickColor: "white",
           dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
+          message: "Hey how are you",
+          nickId: "test-me"        },
         {
-          user: "Jessica Inglis",
-          textColor: "blue",
+          type:"nick",
+          nick: "Jessica Inglis",
+          nickColor: "#4DD0E1",
           dateTime: "March 1st 3:25pm",
-          message: "I'm great"
+          message: "Hey how are you",
+          nickId: "test-not-me"        
         },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          user: "James Inglis",
-          textColor: "red",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you"
-        },
-        {
-          user: "Jessica Inglis",
-          textColor: "blue",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          user: "Julia Inglis",
-          textColor: "green",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        }
       ]
     };
   }
