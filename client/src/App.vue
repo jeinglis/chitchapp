@@ -44,7 +44,7 @@ import Vue from "vue";
 import VueMaterial from "vue-material";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default-dark.css"; // This line here
-import socketio from 'socket.io';
+//import socketio from 'socket.io';
 // import VueSocketIO from 'vue-socket.io';
 
 // export const SocketInstance = socketio('http://localhost:3000');
