@@ -28,7 +28,7 @@ export default {
       currentnickId: "test-me",
       messages: [
         {
-          type:"nick",
+          type:"user",
           nick: "James Inglis",
           nickColor: "white",
           dateTime: "March 1st 3:25pm",
@@ -44,7 +44,7 @@ export default {
           nickId: ""
         },
         {
-          type:"nick",
+          type:"user",
           nick: "Jessica Inglis",
           nickColor: "#4DD0E1",
           dateTime: "March 1st 3:25pm",
@@ -52,48 +52,19 @@ export default {
           nickId: "test-not-me"
         },
         {
-          type:"nick",
+          type:"user",
           nick: "Julia Inglis",
           nickColor: "#F06292",
           dateTime: "March 1st 3:25pm",
           message: "aklfilankjer"
         },
         {
-          type:"nick",
+          type:"user",
           nick: "James Inglis",
           nickColor: "white",
           dateTime: "March 1st 3:25pm",
           message: "Hey how are you",
           nickId: "test-me"        
-        },
-        {
-          type:"nick",
-          nick: "Jessica Inglis",
-          nickColor: "#4DD0E1",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          type:"nick",
-          nick: "Julia Inglis",
-          nickColor: "#F06292",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          type:"nick",
-          nick: "James Inglis",
-          nickColor: "white",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-me"        },
-        {
-          type:"nick",
-          nick: "Jessica Inglis",
-          nickColor: "#4DD0E1",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-not-me"        
         },
       ]
     };

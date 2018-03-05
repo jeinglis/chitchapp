@@ -7,6 +7,8 @@ const port = process.env.PORT || 3000;
 
 const io = require('socket.io')(server);
 
+const messages = [];
+
 server.listen(port, () => {
   console.log(`Listening on *: ${port}`);
 });
@@ -24,13 +26,22 @@ app.get('/', (request, response) => {
 io.on('connection', (socket) => {
   console.log(`A user connected:${socket.id}`);
 
+  messages.push({
+    type: 'system',
+    nick: 'Notification',
+    nickColor: '#BDBDBD',
+    dateTime: 'March 1st 3:25pm',
+    message: 'New User Joined',
+    userId: 'system',
+  });
   // Tell all clients that someone connected
-  io.emit('user joined', socket.id);
+  io.emit(messages);
 
   // The client sends 'chat.message' event to server
   socket.on('chat.message', (message) => {
     // Emit this event to all clients connected to it
-    io.emit(`chat.message ${message}`);
+    messages.push(message);
+    io.emit(messages);
   });
 
   // client sends "user typing" event to server
@@ -46,8 +57,25 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log(`User left: ${socket.id}`);
+    messages.push({
+      type: 'system',
+      nick: 'Notification',
+      nickColor: '#BDBDBD',
+      dateTime: 'March 1st 3:25pm',
+      message: 'User disconnected',
+      userId: 'system',
+    });
+    socket.broadcast.emit(messages);
 
     // Tell all clients that someone disconnected
-    socket.broadcast.emit('user left', socket.id);
+    // socket.broadcast.emit('user left', socket.id);
   });
 });
+
+// randomly generate a magical nickname for new users
+function generateNick () {
+  const prefix = ['sparkle', 'pretty', 'glitter', 'beautiful', 'delicate', 'petite', 'perfect', 'special', 'magical', 'mystical', 'flatulent'];
+  const suffix = ['princess', 'feiry', 'unicorn', 'pony', 'bolognese', 'shawarma'];
+  const nickName = prefix[Math.random()] + suffix[Math.random()];
+  return nickName;
+}
