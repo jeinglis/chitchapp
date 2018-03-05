@@ -6,7 +6,7 @@
           <md-button class="md-raised" @click="toggleMenu" v-if="!menuVisible">
               <span class="md-caption">Active Users</span>
           </md-button>
-          <span class="md-headline">Welcome to ChitChapp {{currentUser.nickname}}</span>
+          <span class="md-headline">Welcome to ChitChapp, {{currentUser.nickname}}</span>
         </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="full" class="md-scrollbar">
