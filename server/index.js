@@ -9,12 +9,6 @@ server.listen(port, function () {
     console.log("Listening on *:" + port);
 });
 
-app.use(express.static(__dirname));
-
-app.get('/', function(request,response) {
-    response.sendFile(__dirname + '/index.html');
-});
-
 app.get('/onlineusers', function(request,response) {
     //console.log(io.sockets.adapter.rooms);
     response.send(io.sockets.adapter.rooms);
