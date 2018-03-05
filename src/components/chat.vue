@@ -35,66 +35,6 @@ export default {
           message: "Hey how are you",
           nickId: "test-me"
         },
-        {
-          type:"system",
-          nick: "Notification",
-          nickColor: "#BDBDBD",
-          dateTime: "March 1st 3:25pm",
-          message: "beep boop this is a system message",
-          nickId: ""
-        },
-        {
-          type:"nick",
-          nick: "Jessica Inglis",
-          nickColor: "#4DD0E1",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great",
-          nickId: "test-not-me"
-        },
-        {
-          type:"nick",
-          nick: "Julia Inglis",
-          nickColor: "#F06292",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          type:"nick",
-          nick: "James Inglis",
-          nickColor: "white",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-me"        
-        },
-        {
-          type:"nick",
-          nick: "Jessica Inglis",
-          nickColor: "#4DD0E1",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great"
-        },
-        {
-          type:"nick",
-          nick: "Julia Inglis",
-          nickColor: "#F06292",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          type:"nick",
-          nick: "James Inglis",
-          nickColor: "white",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-me"        },
-        {
-          type:"nick",
-          nick: "Jessica Inglis",
-          nickColor: "#4DD0E1",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-not-me"        
-        },
       ]
     };
   }
