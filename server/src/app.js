@@ -19,7 +19,7 @@ let tempUsers = [];
 // randomly generate a magical nickname for new users
 function generateNick() {
   const prefix = ['Sparkle', 'Pretty', 'Glitter', 'Beautiful', 'Delicate', 'Petite', 'Perfect', 'Special', 'Magical', 'Mystical', 'Flatulent'];
-  const suffix = ['Princess', 'Fairy', 'Unicorn', 'Pony', 'Bolognese', 'Shawarma'];
+  const suffix = ['Princess', 'Fairy', 'Unicorn', 'Pony', 'Bolognese', 'Shawarma', 'Fedora', 'Narwhale', 'Mermaid', 'Cupcake', 'PizzaPop'];
   const nickName = `${prefix[Math.floor(Math.random() * (prefix.length - 1))]} ${suffix[Math.floor(Math.random() * (suffix.length - 1))]}`;
   return nickName;
 }
