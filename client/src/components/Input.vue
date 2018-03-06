@@ -16,8 +16,10 @@
 
 <script>
 import newMessageService from '@/services/newMessageService';
+import moment from 'moment'
 export default {
   name: 'Input',
+  props: ['currentUser'],
   data () {
     return {
       message: '',
@@ -28,15 +30,14 @@ export default {
       const response = await newMessageService.newMessage({
         message:{
           type: 'user',
-          nick: 'test',
+          nick: this.currentUser.nickname,
           nickColor: '#BDBDBD',
-          dateTime: 'March 1st 3:25pm',
+          dateTime: moment().local().format(' h:mm:ss a - MMMM Do YYYY'),
           message: this.message,
-          userId: 'this-is-me',
+          userId: this.currentUser.uuid,
         }
       })
-      console.log(response.data);
-      console.log('sendMessage was clicked', this.message)
+      this.message = ''; 
     }
   }
 }

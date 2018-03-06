@@ -11,13 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bufferutil": "^3.0.3",
-    "socket.io": "^2.0.4",
-    "socket.io-client": "^2.0.4",
-    "utf-8-validate": "^4.0.0",
+    "moment": "^2.21.0",
     "vue": "^2.5.2",
-    "vue-material": "^1.0.0-beta-7",
-    "vue-socket.io": "^2.1.1-b"
+    "vue-material": "^1.0.0-beta-7"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

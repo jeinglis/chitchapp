@@ -4,7 +4,7 @@
       <md-list-item v-for="message in messages" :key="message.dateTime">
         <md-avatar>
           <md-icon v-if="message.type === 'system'"  v-bind:style="{ color: message.nickColor }">info</md-icon>
-          <md-icon v-else-if="message.nickId === currentnickId"  class="md-primary">person</md-icon>
+          <md-icon v-else-if="message.userId === currentUser.uuid"  class="md-primary">person</md-icon>
           <md-icon v-else v-bind:style="{ color: 'white' }">person</md-icon>
         </md-avatar>
         <div class="md-list-item-text">
@@ -21,53 +21,28 @@
 </template>
 
 <script>
+import getMessagesService from '@/services/getMessagesService';
 export default {
   name: "Chat",
+  props: ['currentUser'],
   data() {
     return {
       currentnickId: "test-me",
-      messages: [
-        {
-          type:"user",
-          nick: "James Inglis",
-          nickColor: "white",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-me"
-        },
-        {
-          type:"system",
-          nick: "Notification",
-          nickColor: "#BDBDBD",
-          dateTime: "March 1st 3:25pm",
-          message: "beep boop this is a system message",
-          nickId: ""
-        },
-        {
-          type:"user",
-          nick: "Jessica Inglis",
-          nickColor: "#4DD0E1",
-          dateTime: "March 1st 3:25pm",
-          message: "I'm great",
-          nickId: "test-not-me"
-        },
-        {
-          type:"user",
-          nick: "Julia Inglis",
-          nickColor: "#F06292",
-          dateTime: "March 1st 3:25pm",
-          message: "aklfilankjer"
-        },
-        {
-          type:"user",
-          nick: "James Inglis",
-          nickColor: "white",
-          dateTime: "March 1st 3:25pm",
-          message: "Hey how are you",
-          nickId: "test-me"        
-        },
-      ]
+      messages: []
     };
+  },
+  mounted() {
+    this.getMessages();
+
+    setInterval(function () {
+      this.getMessages();
+    }.bind(this), 1000);  
+  },
+  methods: {
+    async getMessages () {
+      const response = await getMessagesService.getMessages()
+      this.messages = response.data.message;
+    }
   }
 };
 </script>

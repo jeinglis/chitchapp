@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const uuid = require('uuid4');
 
 const app = express();
 app.use(morgan('combined'));
@@ -10,15 +11,33 @@ app.use(cors());
 
 app.listen(process.env.PORT || 3000);
 
-app.get('/status', (req, res) => {
+const messages = [];
+// randomly generate a magical nickname for new users
+function generateNick() {
+  const prefix = ['Sparkle', 'Pretty', 'Glitter', 'Beautiful', 'Delicate', 'Petite', 'Perfect', 'Special', 'Magical', 'Mystical', 'Flatulent'];
+  const suffix = ['Princess', 'Feiry', 'Unicorn', 'Pony', 'Bolognese', 'Shawarma'];
+  const nickName = `${prefix[Math.floor(Math.random() * (prefix.length - 1))]} ${suffix[Math.floor(Math.random() * (suffix.length - 1))]}`;
+  return nickName;
+}
+app.get('/getMessages', (req, res) => {
   res.send({
-    message: 'hello world',
+    message: messages,
+  });
+});
+
+app.get('/login', (req, res) => {
+  res.send({
+    uuid: uuid(),
+    nickname: generateNick(),
+    textColor: 'white',
   });
 });
 
 app.post('/newMessage', (req, res) => {
+  messages.push(req.body.message);
+  console.log(messages);
   res.send({
-    message: `I received your message: ${req.body.message.message}`,
+    message: `I received your message ${messages[messages.length - 1].message}`,
   });
 });
 
@@ -98,12 +117,3 @@ app.post('/newMessage', (req, res) => {
 //     // socket.broadcast.emit('user left', socket.id);
 //   });
 // });
-
-// randomly generate a magical nickname for new users
-// function generateNick() {
-//   const prefix = ['sparkle', 'pretty', 'glitter', 'beautiful', 'delicate', 'petite'
-// , 'perfect', 'special', 'magical', 'mystical', 'flatulent'];
-//   const suffix = ['princess', 'feiry', 'unicorn', 'pony', 'bolognese', 'shawarma'];
-//   const nickName = prefix[Math.random()] + suffix[Math.random()];
-//   return nickName;
-// }

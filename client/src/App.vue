@@ -28,13 +28,13 @@
 
         <md-app-content class="md-scrollbar">
           <div>
-            <Chat/>
+            <Chat v-bind:currentUser="currentUser"/>
           </div>
         </md-app-content>
       </md-app>
     </div>
     <div class="input">
-      <Input/>
+      <Input v-bind:currentUser="currentUser"/>
     </div>
   </div>
 </template>
@@ -50,6 +50,7 @@ Vue.use(VueMaterial);
 import Chat from "./components/Chat";
 import UserList from "./components/UserList";
 import Input from "./components/Input";
+import loginService from '@/services/loginService';
 
 export default {
   name: "App",
@@ -61,16 +62,25 @@ export default {
   data() {
     return {
       currentUser: {
-        uuid: "test-uuid",
-        nickname: "James Inglis",
-        textColor: "red"
+        uuid: '',
+        nickname: '',
+        textColor: ''
       },
       menuVisible: true
     };
   },
+  mounted(){
+    this.login();
+  },
   methods: {
     toggleMenu: function toggleMenu() {
       this.menuVisible = !this.menuVisible;
+    },
+    async login () {
+      const response = await loginService.login()
+      console.log(response.data);
+      this.currentUser.uuid = response.data.uuid;
+      this.currentUser.nickname = response.data.nickname;
     }
   }
 };
