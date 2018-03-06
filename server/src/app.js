@@ -16,6 +16,12 @@ app.get('/status', (req, res) => {
   });
 });
 
+app.post('/newMessage', (req, res) => {
+  res.send({
+    message: `I received your message: ${req.body.message.message}`,
+  });
+});
+
 // app.get('/', (req, res) => {
 //   res.send({
 //     message: 'hello world',
