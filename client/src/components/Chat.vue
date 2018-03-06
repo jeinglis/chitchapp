@@ -3,16 +3,16 @@
     <md-list class="md-double-line" >
       <md-list-item v-for="message in messages" :key="message.dateTime">
         <md-avatar>
-          <md-icon v-if="message.type === 'system'"  v-bind:style="{ color: message.nickColor }">info</md-icon>
+          <md-icon v-if="message.type === 'system'"  v-bind:style="{ color: message.nicknameColor }">info</md-icon>
           <md-icon v-else-if="message.userId === currentUser.uuid"  class="md-primary">person</md-icon>
           <md-icon v-else v-bind:style="{ color: 'white' }">person</md-icon>
         </md-avatar>
         <div class="md-list-item-text">
           <md-field>
-            <b v-bind:style="{ color: message.nickColor}">{{message.nick}} </b>
+            <b v-bind:style="{ color: message.nicknameColor}">{{message.nickname}} </b>
             <i>{{message.dateTime}}</i>
           </md-field>
-          <span v-if="message.type === 'system'" v-bind:style="{ color: message.nickColor}">{{message.message}}</span>
+          <span v-if="message.type === 'system'" v-bind:style="{ color: message.nicknameColor}">{{message.message}}</span>
           <span v-else v-bind:style="{ color: 'white'}">{{message.message}}</span>
         </div>
       </md-list-item>
@@ -27,7 +27,6 @@ export default {
   props: ['currentUser'],
   data() {
     return {
-      currentnickId: "test-me",
       messages: []
     };
   },

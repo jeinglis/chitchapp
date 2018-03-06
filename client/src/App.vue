@@ -21,7 +21,7 @@
         </md-toolbar>
           <md-list>
             <md-list-item>
-              <UserList/>
+              <UserList v-bind:currentUser="currentUser"/>
             </md-list-item>
           </md-list>
       </md-app-drawer>
@@ -54,6 +54,7 @@ import loginService from '@/services/loginService';
 
 export default {
   name: "App",
+  props: ['currentUser'],
   components: {
     Chat,
     UserList,
@@ -61,27 +62,13 @@ export default {
   },
   data() {
     return {
-      currentUser: {
-        uuid: '',
-        nickname: '',
-        textColor: ''
-      },
       menuVisible: true
     };
-  },
-  mounted(){
-    this.login();
   },
   methods: {
     toggleMenu: function toggleMenu() {
       this.menuVisible = !this.menuVisible;
     },
-    async login () {
-      const response = await loginService.login()
-      console.log(response.data);
-      this.currentUser.uuid = response.data.uuid;
-      this.currentUser.nickname = response.data.nickname;
-    }
   }
 };
 </script>

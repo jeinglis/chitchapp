@@ -30,8 +30,8 @@ export default {
       const response = await newMessageService.newMessage({
         message:{
           type: 'user',
-          nick: this.currentUser.nickname,
-          nickColor: '#BDBDBD',
+          nickname: this.currentUser.nickname,
+          nicknameColor: 'white',
           dateTime: moment().local().format(' h:mm:ss a - MMMM Do YYYY'),
           message: this.message,
           userId: this.currentUser.uuid,

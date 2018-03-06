@@ -1,25 +1,34 @@
 <template>
   <div class="userList">
     <md-list>
-      <md-list-item v-for="user in users" :key="user.name">
-        <span class="md-subheading">{{ user.name }}</span>
+      <md-list-item v-for="user in users" :key="user.uuid">
+        <span class="md-subheading">{{ user.nickname }}</span>
       </md-list-item>
     </md-list>
   </div>
 </template>
 
 <script>
+import getUserListService from '@/services/getUserListService';
 export default {
   name: 'UserList',
+  props: ['currentUser'],
   data () {
     return {
-      users:[
-        {name:"James Inglis", textColor:"red"},
-        {name:"Jessica Inglis", textColor:"blue"},
-        {name:"Julia Inglis", textColor:"pink"},
-        {name:"Finn Inglis", textColor:"green"},
-        {name:"Willow Inglis", textColor:"black"},
-        ]
+      users:[]
+    }
+  },
+  mounted() {
+    this.getUserList();
+
+    setInterval(function () {
+      this.getUserList();
+    }.bind(this), 1000);  
+  },
+  methods: {
+    async getUserList () {
+      const response = await getUserListService.getUserList(this.currentUser);
+      this.users = response.data;
     }
   }
 }
