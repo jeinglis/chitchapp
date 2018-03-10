@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import logoutService from '@/services/logoutService';
 import loginService from '@/services/loginService';
 
 Vue.config.productionTip = false
@@ -25,10 +24,6 @@ new Vue({
     this.login();
   },
   methods: {
-    leaving() {
-      logoutService.logout(currentUser);
-      console.log('leaving');
-    },
     async login() {
       const response = await loginService.login()
       console.log(response.data);
